@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #112;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: wheat;
+}
+.row {
+    width: 100%;
+    display: flex;
+}
+.title {
+    height: 100px;
+    border-bottom: 2px solid black;
+    align-items: center;
+    padding-left: 30px;
+}
+.content {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+.logo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-image: url(logo.png);
+    background-size: cover;
+    position: relative;
+}
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+.logo::after, .logo::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-image: conic-gradient(from var(--angle), red, blue,red);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 4px;
+    border-radius: 50%;
+    animation: spin 3s linear infinite;
+}
+@keyframes spin {
+    from{
+        --angle: 0deg;
+    }to{
+        --angle: 360deg;
+    }
+}
+.logo::before {
+    filter: blur(3rem);
+    opacity: 0.8;
+}
+.seekbar {
+    height: 40px;
+    border-top: 2px solid black;
+}
+.controler {
+    border-top: 2px solid black;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
